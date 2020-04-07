@@ -1,0 +1,20 @@
+import { Application } from 'egg';
+
+export default (app: Application) => {
+  const { controller, router } = app;
+
+  router.get('/', controller.home.index);
+  router.get('/demo', controller.home.demo);
+
+  router.resources(
+    'admin_products',
+    '/api/v1/admin/products',
+    controller.api.v1.admin.products
+  );
+
+  router.resources(
+    'admin_articles',
+    '/api/v1/admin/articles',
+    controller.api.v1.admin.articles
+  );
+};
